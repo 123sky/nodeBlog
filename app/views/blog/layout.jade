@@ -1,0 +1,62 @@
+extend ../layout
+
+append css
+	link(rel='stylesheet',href='css/blog.css')
+
+block main
+	block header
+		.blog-masthead
+			.container
+				nav.blog-nav
+					if(pageName === "/")
+						a.blog-nav-item.active(href='/') 首页
+					else
+						a.blog-nav-item(href='/') 首页
+					if(pageName === "/connect")
+						a.blog-nav-item.active(href='/connect') 联系我们
+					else
+						a.blog-nav-item(href='/connect') 联系我们
+					if(pageName === "/about")
+						a.blog-nav-item.active(href='/about') 关于
+					else
+						a.blog-nav-item(href='/about') 关于
+
+	.container
+		.row
+			.col-sm-8.blog-main
+				block content
+			.col-sm-3.col-sm-offset-1.blog-sidebar
+				.sidebar-module.sidebar-module-inset
+					h4 简介
+					p Node是一个Javascript运行环境(runtime)实际上它是对GoogleV8引擎进行了封装。V8引擎执行Javascrip的速度非常快，性能非常好。Node.js对一些特殊用例进行了优化，提供了替代的API，使得V8在非浏览器环境下运行得更好。Node.js是一个基于Chrome JavaScript运行时建立的平台， 用于方便地搭建响应速度快、易于扩展的网络应用。Node.js 使用事件驱动， 非阻塞I/O 模型而得以轻量和高效，非常适合在分布式设备上运行数据密集型的实时应用。
+				.sidebar-module
+					h4 相关内容
+					ol.list-unstyled
+						li
+							a(href='#') bower
+						li
+							a(href='#') gulp
+						li
+							a(href='#') yoman
+						li
+							a(href='#') express
+
+				.sidebar-module
+					h4 友情链接
+					ol.list-unstyled
+						li
+							a(href='#') GitHub
+						li
+							a(href='#') Twitter
+						li
+							a(href='#') Facebook
+				// /.blog-sidebar
+			// /.row
+		// /.container
+		
+	block footer
+		footer.blog-footer
+			p
+				NodeBlog by chenjp@phy.com
+			p
+				a(href='#') Back to top

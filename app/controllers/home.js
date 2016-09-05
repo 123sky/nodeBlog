@@ -10,9 +10,29 @@ module.exports = function (app) {
 router.get('/', function (req, res, next) {
   Article.find(function (err, articles) {
     if (err) return next(err);
-    res.render('index', {
-      title: 'Generator-Express MVC',
-      articles: articles
+    res.render('blog/index', {
+      title: 'nodeBlog Home',
+      pretty: true
+    });
+  });
+});
+
+router.get('/connect', function (req, res, next) {
+  Article.find(function (err, articles) {
+    if (err) return next(err);
+    res.render('blog/index', {
+      title: 'nodeBlog contain',
+      pretty: true
+    });
+  });
+});
+
+router.get('/about', function (req, res, next) {
+  Article.find(function (err, articles) {
+    if (err) return next(err);
+    res.render('blog/index', {
+      title: 'nodeBlog about',
+      pretty: true
     });
   });
 });
