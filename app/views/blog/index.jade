@@ -7,7 +7,7 @@ block content
                 a(href="/posts/view/"+post._id,target="_blank")
                     =post.title
             div.post-abstract
-                =post.content
+                =truncate(post.content,160)
             div.post-meta
                 span.post-created
                     发布时间:&nbsp;
@@ -26,6 +26,16 @@ block content
                     =post.meta.favorite || 0
                 span.post-link
                     a(href="/posts/view/"+post._id,target="_blank")查看全文
-                    
+    if pageCount>1
+        nav
+            ul.pagination
+                -var currentPage = 1
+                while currentPage < pageCount
+                    if(currentPage === pageNum)
+                        li.active
+                            a(href="posts?page="+currentPage)= currentPage++
+                    else
+                        li
+                            a(href="posts?page="+currentPage)= currentPage++
 block scripts
     script $(function(){console.log('node Blog is ready')})
