@@ -1,6 +1,8 @@
 extends layout
 
 block content
+    h2.page-header nodejs博客网站
+
     each post in posts
         div.post
             h3.post-title
@@ -17,7 +19,8 @@ block content
                     =post.author.name
                 span.post-category
                     分类:&nbsp;
-                    =post.category.name
+                    a(href='/posts/category/'+post.category.name)
+                        =post.category.name
                 span.post-comment
                     评论:&nbsp;
                     =post.comments.length || 0

@@ -2,6 +2,7 @@ var express = require('express'),
   router = express.Router(),
   mongoose = require('mongoose'),
   Post = mongoose.model('Post');
+  Category = mongoose.model('Category');
 
 module.exports = function (app) {
   app.use('/posts', router);
@@ -31,6 +32,32 @@ router.get('/', function (req, res, next) {
             pretty: true
           });
       });
+});
+
+router.get('/category/:name', function (req, res, next) {
+    Category.findOne({name:req.params.name})
+            .exec(function(err,category){
+        if(err){
+            return next(err)
+        }
+
+        Post.find({category:category,published:true})
+            .sort("created")
+            .populate('category')
+            .populate('author')
+            .exec(function (err,posts){
+                if(err){
+                    return next(err)
+                }
+
+                res.render('blog/category',{
+                    posts:posts,
+                    category:category,
+                    pretty:true
+                })
+            })
+
+    })
 });
 
 router.get('/view', function (req, res, next) {

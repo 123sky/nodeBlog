@@ -15,7 +15,7 @@ var config = {
   test: {
     root: rootPath,
     app: {
-      name: 'nodeblog'
+      name: 'nodeBlog'
     },
     port: process.env.PORT || 3000,
     db: 'mongodb://localhost/nodeblog-test'
@@ -24,7 +24,7 @@ var config = {
   production: {
     root: rootPath,
     app: {
-      name: 'nodeblog'
+      name: 'nodeBlog'
     },
     port: process.env.PORT || 3000,
     db: 'mongodb://localhost/nodeblog-production'
