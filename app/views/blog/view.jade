@@ -1,0 +1,37 @@
+extends layout
+
+append css
+    link(rel='stylesheet',href='/components/font-awesome/css/font-awesome.css')
+
+block content
+    h2.page-header.post-view-title= post.title
+    div.post.post-view
+        div.post-meta
+            span.post-created
+                i.fa.fa-calendar
+                &nbsp;发布时间:&nbsp;
+                =moment(post.created).format('YYYY-MM-DD')
+            span.post-author
+                i.fa.fa-user
+                &nbsp;作者:&nbsp;
+                =post.author.name
+            span.post-category
+                i.fa.fa-th-large
+                &nbsp;分类:&nbsp;
+                a(href='/posts/category/'+post.category.name)
+                    =post.category.name
+            span.post-comment
+                i.fa.fa-comments-o
+                &nbsp;评论:&nbsp;
+                =post.comments.length || 0
+            span.post-favorite
+                i.fa.fa-thumbs-o-up
+                &nbsp;被赞:&nbsp;
+                a(href='/posts/favorite/'+post._id)
+                    =post.meta.favorite || 0
+
+        div.post-content
+            =post.content
+    
+block scripts
+    script $(function(){console.log('node Blog view is ready')})
